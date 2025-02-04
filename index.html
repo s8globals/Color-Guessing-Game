@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to the Color Guessing Game!</h2>
+            <p data-testid="gameInstructions">Try to guess the correct color from the options below before time runs out.</p>
+            <button id="closeModal">OK, Let's Play!</button>
+        </div>
+    </div>
+
+    <!-- Game Container -->
+    <div class="container">
+        <h1>Color Guessing Game</h1>  
+        
+        <!-- Score Display -->
+        <p id="score" data-testid="score">Score: 0</p>
+
+        <!-- Timer Display -->
+        <p id="timer">Time Left: 10s</p>
+
+        <div id="colorBox" class="color-box" data-testid="colorBox"></div>
+
+        <!-- Color Options (Player Choices) -->
+        <div id="colorOptions" class="color-options" data-testid="colorOption"></div>
+
+        <!-- Game Status -->
+        <p id="gameStatus" data-testid="gameStatus"></p>
+
+      
+        <!-- Buttons -->
+        <button id="newGameButton" data-testid="newGameButton">New Game</button>
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+    </div>
+
+    <!-- Time Up Modal -->
+    <div id="timeUpModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Time's Up!</h2>
+            <p>You ran out of time. Start a new game?</p>
+            <button id="restartGame">New Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
