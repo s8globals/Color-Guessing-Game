@@ -3,36 +3,148 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f4f4f4;
-    transition: background 0.3s, color 0.3s;
-}
-
-h1 {
     color: #333;
-    font-size: 28px;
+    transition: background 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+}
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-/* Game Container */
-.game-container {
+/* Modal Styling */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    backdrop-filter: blur(10px); /* Blur effect */
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+    background: linear-gradient(135deg, #ffffff, #f3f3f3); /* Soft gradient */
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 90%;
+    max-width: 420px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Heading */
+.modal-content h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Paragraph */
+.modal-content p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Button */
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #388E3C;
+}
+
+/* Hide modal when not active */
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Container */
+.container {
     max-width: 400px;
-    margin: 20px auto;
+    margin: 50px auto;
     padding: 20px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
-/* Color Display Box */
-.color-box {
+/* Headings */
+h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 15px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.2s;
+    background-color: #007bff;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#darkModeToggle {
+    background: #222;
+    color: white;
+}
+
+/* Color Box */
+#colorBox {
     width: 100px;
     height: 100px;
-    margin: 10px auto;
-    border-radius: 8px;
-    border: 3px solid #222;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 2px solid #000;
+    transition: transform 0.3s;
 }
 
 /* Color Options */
-.color-options {
+#colorOptions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -41,55 +153,41 @@ h1 {
 }
 
 .colorOption {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
     cursor: pointer;
-    border: 2px solid #ddd;
     transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
 }
 
 .colorOption:hover {
     transform: scale(1.1);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid black;
 }
 
-/* Status & Score */
+/* Game Status */
 #gameStatus {
     font-size: 18px;
     font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Score & Timer */
+p {
+    font-size: 18px;
     margin: 10px 0;
 }
 
 #score {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-/* Buttons */
-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 5px;
-    transition: background 0.3s, transform 0.2s;
-}
-
-button:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Timer */
-#timer {
-    font-size: 18px;
-    color: #d9534f;
     font-weight: bold;
+    color: #28a745;
+}
+
+#timer {
+    font-weight: bold;
+    color: #dc3545;
 }
 
 /* Dark Mode */
@@ -98,60 +196,37 @@ button:hover {
     color: white;
 }
 
-.dark-mode .game-container {
+.dark-mode .container {
     background: #333;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
 
 .dark-mode button {
-    background: #ff9800;
-}
-
-/* Modal Styling */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 80%;
-    max-width: 300px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease-in-out;
+    color: black;
 }
 
-.modal button {
-    margin-top: 10px;
-    background: #28a745;
+.dark-mode #darkModeToggle {
+    background: white;
+    color: black;
 }
 
-.modal button:hover {
-    background: #218838;
-}
-
-/* Hide Modal */
-.hidden {
-    display: none;
-}
-
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
+/* Mobile Responsiveness */
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
+
+    #colorOptions {
+        gap: 5px;
+    }
+
+    .colorOption {
+        width: 40px;
+        height: 40px;
+    }
+
+    button {
+        width: 100%;
     }
 }
