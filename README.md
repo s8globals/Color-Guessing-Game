@@ -18,10 +18,14 @@ Choose the correct color from 10 available options.
 If correct, you earn a point; if wrong, try again!
 The game continues until time runs out.
 Click "New Game" to restart.
+
+
 🛠️ Technologies Used
 HTML – For structuring the game
 CSS – For styling and responsiveness
 JavaScript – For game logic and interactivity
+
+
 📌 Future Enhancements
 Add more difficulty levels (Easy, Medium, Hard)
 Implement sound effects for user interaction
